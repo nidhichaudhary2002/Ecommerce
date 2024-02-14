@@ -35,9 +35,68 @@
     --bs-gradient: none;
 }
 
+.dropdown-menu[data-bs-popper] {
+  top: 101%;
+  left: -70px;
+  margin-top: var(--bs-dropdown-spacer);
+}
+
 /* Banner image */
 
 .banner-img{
-padding: auto;
+  padding-top: 60px;
 margin: auto;
+}
+
+/* More detail button */
+.btn-info{
+  background-color: var(--purple);
+  color: white;
+  font-weight: 500 !important;
+  border-color: var(--purple);
+}
+.btn-info:hover{
+  background-color: var(--orange);
+  color: white;
+  border-color: var(--orange);
+}
+
+/* Add to cart button */
+.btn-dark{
+  background-color: white;
+  color: var(--purple);
+  border-color: white;
+  border-color: var(--purple);
+  font-weight: 500 !important;
+}
+
+.btn-dark:hover{
+  background-color: var(--orange);
+  color: white;
+  border-color: var(--orange);
+}
+
+/* Card */
+.card{
+  background-color: var(--orange) !important;
+}
+
+.card-img-top{
+  width: inherit;
+  height: 300px;
+}
+
+/* Dashboard */
+
+.dashboard-menu h4 {
+  background-color: black !important;
+  color: white;
+  padding: 20px 0px;
+}
+
+.list-group-item.active {
+  z-index: 2;
+  color: black;
+  background-color:  var(--green);
+  border-color: var(--green);
 }

@@ -109,12 +109,14 @@ const HomePage = () => {
   return (
     <Layout title={'ALL Products - Best offers '}>
       {/* banner image */}
-      <img
-        src='/images/E-commerce1.png'
-        className='banner-img'
-        alt='bannerimage'
-        width={'100%'}
-      />
+      <div>
+        <img
+          src='/images/E-commerce1.png'
+          className='banner-img'
+          alt='bannerimage'
+          width={'100%'}
+        />
+      </div>
       {/* Filter by category */}
       <div className='container-fluid row mt-3 home-page'>
         <div className='col-md-3 filters'>
@@ -150,6 +152,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className='col-md-9 '>
+          {/* Product Cards */}
           <h1 className='text-center'>All Products</h1>
           <div className='d-flex flex-wrap'>
             {products?.map((p) => (
@@ -179,19 +182,7 @@ const HomePage = () => {
                     >
                       More Details
                     </button>
-                    <button
-                      className='btn btn-dark ms-1'
-                      // onClick={() => {
-                      //   setCart([...cart, p]);
-                      //   localStorage.setItem(
-                      //     "cart",
-                      //     JSON.stringify([...cart, p])
-                      //   );
-                      //   toast.success("Item Added to cart");
-                      // }}
-                    >
-                      ADD TO CART
-                    </button>
+                    <button className='btn btn-dark ms-1'>ADD TO CART</button>
                   </div>
                 </div>
               </div>
