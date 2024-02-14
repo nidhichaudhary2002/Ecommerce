@@ -22,7 +22,7 @@ export const createProductController = async (req, res) => {
     const { name, description, price, category, quantity, shipping } =
       req.fields;
     const { photo } = req.files;
-    //alidation
+    //validation
     switch (true) {
       case !name:
         return res.status(500).send({ error: "Name is Required" });
@@ -125,7 +125,7 @@ export const productPhotoController = async (req, res) => {
   }
 };
 
-//delete controller
+//delete product
 export const deleteProductController = async (req, res) => {
   try {
     await productModel.findByIdAndDelete(req.params.pid).select("-photo");
@@ -149,7 +149,7 @@ export const updateProductController = async (req, res) => {
     const { name, description, price, category, quantity, shipping } =
       req.fields;
     const { photo } = req.files;
-    //alidation
+    //validation
     switch (true) {
       case !name:
         return res.status(500).send({ error: "Name is Required" });
@@ -192,7 +192,7 @@ export const updateProductController = async (req, res) => {
   }
 };
 
-// filters
+// filter product
 export const productFiltersController = async (req, res) => {
   try {
     const { checked, radio } = req.body;
@@ -208,7 +208,7 @@ export const productFiltersController = async (req, res) => {
     console.log(error);
     res.status(400).send({
       success: false,
-      message: "Error WHile Filtering Products",
+      message: "Error While Filtering Products",
       error,
     });
   }
@@ -306,7 +306,7 @@ export const realtedProductController = async (req, res) => {
   }
 };
 
-// get prdocyst by category
+// get product by category
 export const productCategoryController = async (req, res) => {
   try {
     const category = await categoryModel.findOne({ slug: req.params.slug });

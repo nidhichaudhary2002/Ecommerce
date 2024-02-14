@@ -7,7 +7,6 @@ import useCategory from "../../hooks/useCategory";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
-  // const [cart] = useCart();
   const categories = useCategory();
   const handleLogout = () => {
     setAuth({
@@ -20,7 +19,7 @@ const Header = () => {
   };
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+      <nav className=" navbar-expand-lg bg-body-tertiary fixed-top navbar">
         <div className="container-fluid">
           <button
             className="navbar-toggler"

@@ -6,6 +6,13 @@
   box-sizing: border-box;
 }
 
+:root{
+--light:#ddf2fd;
+--blue:#9bbec8;
+--teal: #427D9D;
+--dark:#164863;
+}
+
 /* font-family: 'Poppins', sans-serif; */
 /* font-family: 'Playfair Display', serif; */
 
@@ -47,6 +54,15 @@
   border-radius: 0;
   color: white;
 }
+
+
+/* ==========================
+ ========FORM============ */
+
+ .forms{
+background-color: var(--dark);
+ }
+
 
 /* =============================
 ==========footer============= */
