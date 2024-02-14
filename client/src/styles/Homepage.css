@@ -6,6 +6,8 @@
     --green:#58bf88;
     }
 
+    /* Navbar */
+
 .navbar{
   background-color: black !important;
 }
@@ -76,9 +78,20 @@ margin: auto;
   border-color: var(--orange);
 }
 
+/* headings */
+.heading{
+  font-family: "Brush Script MT", cursive;
+  font-weight: 500;
+}
+
 /* Card */
 .card{
   background-color: var(--orange) !important;
+}
+
+.cardCategory{
+  background-color: var(--purple) !important;
+margin-top: 10px !important;
 }
 
 .card-img-top{

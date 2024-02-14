@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import Layout from './../components/Layout/Layout';
 import { AiOutlineReload } from 'react-icons/ai';
 import '../styles/Homepage.css';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -117,10 +118,30 @@ const HomePage = () => {
           width={'100%'}
         />
       </div>
+      {/* Categories */}
+      <div>
+        <h1 className='text-center heading' style={{ marginTop: '20px' }}>
+          Categories
+        </h1>
+        <div className='container' style={{ marginTop: '0px' }}>
+          <div className='row container'>
+            {categories.map((c) => (
+              <div className='col-md-4 mt-5 mb-3 gx-3 gy-3' key={c._id}>
+                <div className='card cardCategory'>
+                  <Link to={`/category/${c.slug}`} className='btn cat-btn'>
+                    {c.name}
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Filter by category */}
       <div className='container-fluid row mt-3 home-page'>
         <div className='col-md-3 filters'>
-          <h4 className='text-center'>Filter By Category</h4>
+          <h4 className='text-center heading'>Filter By Category</h4>
           <div className='d-flex flex-column'>
             {categories?.map((c) => (
               <Checkbox
@@ -132,7 +153,7 @@ const HomePage = () => {
             ))}
           </div>
           {/* price filter */}
-          <h4 className='text-center mt-4'>Filter By Price</h4>
+          <h4 className='text-center mt-4 heading'>Filter By Price</h4>
           <div className='d-flex flex-column'>
             <Radio.Group onChange={(e) => setRadio(e.target.value)}>
               {Prices?.map((p) => (
@@ -153,7 +174,7 @@ const HomePage = () => {
         </div>
         <div className='col-md-9 '>
           {/* Product Cards */}
-          <h1 className='text-center'>All Products</h1>
+          <h1 className='text-center heading'>All Products</h1>
           <div className='d-flex flex-wrap'>
             {products?.map((p) => (
               <div className='card m-2' key={p._id}>
