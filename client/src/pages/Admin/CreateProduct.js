@@ -3,6 +3,7 @@ import Layout from "./../../components/Layout/Layout";
 import AdminMenu from "./../../components/Layout/AdminMenu";
 import toast from "react-hot-toast";
 import axios from "axios";
+import '../../styles/authStyles.css';
 import { Select } from "antd";
 import { useNavigate } from "react-router-dom";
 const { Option } = Select;
@@ -66,10 +67,10 @@ const CreateProduct = () => {
     <Layout title={"Dashboard - Create Product"}>
       <div className="container-fluid m-3 p-3 dashboard">
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-md-11">
             <AdminMenu />
           </div>
-          <div className="col-md-9">
+          <div className="col-md-12 adminView">
             <h1>Create Product</h1>
              <div className="m-1 w-75">
               <Select
@@ -89,7 +90,7 @@ const CreateProduct = () => {
                 ))}
               </Select>
               <div className="mb-3">
-                <label className="btn btn-outline-secondary col-md-12">
+                <label className="btn btn-outline-secondary col-md-12 ">
                   {photo ? photo.name : "Upload Photo"}
                   <input
                     type="file"

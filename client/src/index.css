@@ -97,6 +97,7 @@ background-color: var(--dark);
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-image: linear-gradient(0deg, rgb(201, 174, 227) 0%, #839dde 100%);
 }
 
 .pnf-title {
@@ -106,6 +107,7 @@ background-color: var(--dark);
 
 .pnf-heading {
   font-weight: normal;
+  
 }
 
 .pnf-btn {

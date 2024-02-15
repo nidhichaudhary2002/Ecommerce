@@ -63,6 +63,11 @@ margin: auto;
   border-color: var(--orange);
 }
 
+/* Load more button */
+.loadmore{
+  background-color: var(--green);
+}
+
 /* Add to cart button */
 .btn-dark{
   background-color: white;
@@ -82,6 +87,15 @@ margin: auto;
 .heading{
   font-family: "Brush Script MT", cursive;
   font-weight: 500;
+}
+
+/* Filter column */
+.filters{
+  padding-top: 30px;
+}
+
+.filterContent{
+  font-size: 10rem !important;
 }
 
 /* Card */
