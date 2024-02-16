@@ -80,6 +80,7 @@ export const categoryController = async (req, res) => {
 export const singleCategoryController = async (req, res) => {
   try {
     const category = await categoryModel.findOne({ slug: req.params.slug });
+    console.log(category);
     res.status(200).send({
       success: true,
       message: "Get Single Category Successfully",

@@ -311,6 +311,8 @@ export const productCategoryController = async (req, res) => {
   try {
     const category = await categoryModel.findOne({ slug: req.params.slug });
     const products = await productModel.find({ category }).populate("category");
+    console.log(category);
+    console.log(products);
     res.status(200).send({
       success: true,
       category,

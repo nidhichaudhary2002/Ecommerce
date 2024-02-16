@@ -101,6 +101,11 @@ margin: auto;
 /* Card */
 .card{
   background-color: var(--orange) !important;
+  width: 300px;
+}
+.cardHomepage{
+  background-color: var(--orange) !important;
+  width: auto !important;
 }
 
 .cardCategory{
