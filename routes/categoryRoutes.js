@@ -38,7 +38,8 @@ router.get("/get-category", categoryController);
 // get category photo
 router.get("/category-photo/:cid", categoryPhotoController);
 
-router.get("/get-category/:slug", getAllProductOfACategory);
+router.get("/:slug", getAllProductOfACategory);
+
 //single category
 router.get("/single-category/:slug", singleCategoryController);
 

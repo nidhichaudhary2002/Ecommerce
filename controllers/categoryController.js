@@ -118,6 +118,8 @@ export const categoryPhotoController = async (req, res) => {
 
 export const getAllProductOfACategory = async (req, res) => {
   try {
+    console.log('reached controller');
+    console.log(req.params);
     const category = await categoryModel.findOne({ slug: req.params.slug });
     const products = await productModel.find({ category }).populate('category');
     console.log(category);

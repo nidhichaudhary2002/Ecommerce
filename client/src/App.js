@@ -1,10 +1,10 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Policy from "./pages/Policy";
-import PageNotFound from "./pages/PageNotFound";
+import About from "./pages/static/About";
+import Contact from "./pages/static/Contact";
+import Policy from "./pages/static/Policy";
+import PageNotFound from "./pages/static/PageNotFound";
 import Register from "./pages/Auth/Register";
 import Login from "./pages/Auth/Login";
 import Dashboard from "./pages/user/Dashboard";
@@ -36,7 +36,7 @@ function App() {
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="user" element={<Dashboard />} />
           <Route path="user/orders" element={<Orders />} />
-          <Route path="user/profile" element={<Profile />} />
+          <Route path="user/gprofile" element={<Profile />} />
         
         </Route>
 
