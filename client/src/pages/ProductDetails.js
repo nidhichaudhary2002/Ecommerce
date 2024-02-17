@@ -39,8 +39,8 @@ const ProductDetails = () => {
   };
   return (
     <Layout>
-      <div className="row container product-details">
-        <div className="col-md-6">
+      <div className="row container product-details details-card">
+        <div className="col-md-6 img-detail">
           <img
             src={`/api/v1/product/product-photo/${product._id}`}
             className="card-img-top"

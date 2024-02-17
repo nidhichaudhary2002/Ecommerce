@@ -37,5 +37,3 @@ const userSchema = new mongoose.Schema(
 );
 
 export default mongoose.model("users", userSchema);
-
-// mongodb+srv://nidhichaudhary2002:Nidhi9654@cluster0.nnso9vh.mongodb.net/

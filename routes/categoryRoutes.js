@@ -6,7 +6,10 @@ import {
   deleteCategoryCOntroller,
   singleCategoryController,
   updateCategoryController,
+  getAllProductOfACategory,
+  categoryPhotoController
 } from "./../controllers/categoryController.js";
+import formidable from "express-formidable";
 
 const router = express.Router();
 
@@ -16,6 +19,7 @@ router.post(
   "/create-category",
   requireSignIn,
   isAdmin,
+  formidable(),
   createCategoryController
 );
 
@@ -24,12 +28,17 @@ router.put(
   "/update-category/:id",
   requireSignIn,
   isAdmin,
+  formidable(),
   updateCategoryController
 );
 
-//getALl category
+//getALL category
 router.get("/get-category", categoryController);
 
+// get category photo
+router.get("/category-photo/:cid", categoryPhotoController);
+
+router.get("/get-category/:slug", getAllProductOfACategory);
 //single category
 router.get("/single-category/:slug", singleCategoryController);
 

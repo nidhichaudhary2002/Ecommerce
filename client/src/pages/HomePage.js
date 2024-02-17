@@ -64,6 +64,7 @@ const HomePage = () => {
     if (page === 1) return;
     loadMore();
   }, [page]);
+
   //load more
   const loadMore = async () => {
     try {
@@ -127,7 +128,12 @@ const HomePage = () => {
           <div className='row container'>
             {categories.map((c) => (
               <div className='col-md-4 mt-5 mb-3 gx-3 gy-3' key={c._id}>
-                <div className='card cardHomepage cardCategory'>
+                <div
+                  className='card cardHomepage cardCategory'
+                  style={{
+                    backgroundImage: `url(/api/v1/category/category-photo/${c._id})`,
+                  }}
+                >
                   <Link to={`/category/${c.slug}`} className='btn cat-btn'>
                     {c.name}
                   </Link>
@@ -163,9 +169,9 @@ const HomePage = () => {
               ))}
             </Radio.Group>
           </div>
-          <div className='d-flex flex-column'>
+          <div className='d-flex flex-column '>
             <button
-              className='btn btn-danger'
+              className='btn btn-danger resetButton'
               onClick={() => window.location.reload()}
             >
               RESET FILTERS

@@ -1,25 +1,47 @@
-import categoryModel from "../models/categoryModel.js";
-import slugify from "slugify";
+import categoryModel from '../models/categoryModel.js';
+import productModel from '../models/productModel.js';
+import slugify from 'slugify';
+import fs from 'fs';
+
 export const createCategoryController = async (req, res) => {
   try {
-    const { name } = req.body;
+    // console.log('reached');
+    const { name } = req.fields;
+    const { photo } = req.files;
+    // console.log(req.files);
+    // console.log();
     if (!name) {
-      return res.status(401).send({ message: "Name is required" });
+      return res.status(401).send({ message: 'Name is required' });
     }
+    if (photo && photo.size > 1000000) {
+      return res
+        .status(500)
+        .send({ error: 'photo is Required and should be less then 1mb' });
+    }
+
     const existingCategory = await categoryModel.findOne({ name });
     if (existingCategory) {
       return res.status(200).send({
         success: false,
-        message: "Category Already Exists",
+        message: 'Category Already Exists',
       });
     }
-    const category = await new categoryModel({
+
+    const category = new categoryModel({
       name,
+      ...req.fields,
       slug: slugify(name),
-    }).save();
+    });
+
+    if (photo) {
+      category.photo.data = fs.readFileSync(photo.path);
+      category.photo.contentType = photo.type;
+    }
+    await category.save();
+
     res.status(201).send({
       success: true,
-      message: "new category created",
+      message: 'new category created',
       category,
     });
   } catch (error) {
@@ -27,7 +49,7 @@ export const createCategoryController = async (req, res) => {
     res.status(500).send({
       success: false,
       error,
-      message: "Error in Category",
+      message: 'Error in Category',
     });
   }
 };
@@ -44,7 +66,7 @@ export const updateCategoryController = async (req, res) => {
     );
     res.status(200).send({
       success: true,
-      messsage: "Category Updated Successfully",
+      messsage: 'Category Updated Successfully',
       category,
     });
   } catch (error) {
@@ -52,7 +74,7 @@ export const updateCategoryController = async (req, res) => {
     res.status(500).send({
       success: false,
       error,
-      message: "Error while updating category",
+      message: 'Error while updating category',
     });
   }
 };
@@ -63,7 +85,7 @@ export const categoryController = async (req, res) => {
     const category = await categoryModel.find({});
     res.status(200).send({
       success: true,
-      message: "All Categories List",
+      message: 'All Categories List',
       category,
     });
   } catch (error) {
@@ -71,7 +93,46 @@ export const categoryController = async (req, res) => {
     res.status(500).send({
       success: false,
       error,
-      message: "Error while getting all categories",
+      message: 'Error while getting all categories',
+    });
+  }
+};
+
+// get photo of category
+export const categoryPhotoController = async (req, res) => {
+  try {
+    const category = await categoryModel.findById(req.params.cid).select('photo');
+    if (category.photo.data) {
+      res.set('Content-type', category.photo.contentType);
+      return res.status(200).send(category.photo.data);
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: 'Error while getting photo',
+      error,
+    });
+  }
+};
+
+export const getAllProductOfACategory = async (req, res) => {
+  try {
+    const category = await categoryModel.findOne({ slug: req.params.slug });
+    const products = await productModel.find({ category }).populate('category');
+    console.log(category);
+    console.log(products);
+    res.status(200).send({
+      success: true,
+      category,
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      error,
+      message: 'Error While Getting products',
     });
   }
 };
@@ -83,7 +144,7 @@ export const singleCategoryController = async (req, res) => {
     console.log(category);
     res.status(200).send({
       success: true,
-      message: "Get Single Category Successfully",
+      message: 'Get Single Category Successfully',
       category,
     });
   } catch (error) {
@@ -91,7 +152,7 @@ export const singleCategoryController = async (req, res) => {
     res.status(500).send({
       success: false,
       error,
-      message: "Error While getting Single Category",
+      message: 'Error While getting Single Category',
     });
   }
 };
@@ -103,13 +164,13 @@ export const deleteCategoryCOntroller = async (req, res) => {
     await categoryModel.findByIdAndDelete(id);
     res.status(200).send({
       success: true,
-      message: "Categry Deleted Successfully",
+      message: 'Categry Deleted Successfully',
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "error while deleting category",
+      message: 'error while deleting category',
       error,
     });
   }
