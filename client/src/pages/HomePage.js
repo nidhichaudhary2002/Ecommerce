@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   const navigate = useNavigate();
-  // const [cart, setCart] = useCart();
+  const [cart, setCart] = useCart();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
@@ -111,7 +111,7 @@ const HomePage = () => {
   return (
     <Layout title={'ALL Products - Best offers '}>
       {/* banner image */}
-      <div>
+      <div className='banner'>
         <img
           src='/images/E-commerce1.png'
           className='banner-img'
@@ -209,7 +209,16 @@ const HomePage = () => {
                     >
                       More Details
                     </button>
-                    <button className='btn btn-dark ms-1'>ADD TO CART</button>
+                    <button
+                      className='btn btn-dark ms-1'
+                      onClick={() => {
+                        setCart([...cart, p]);
+                        localStorage.setItem('cart',JSON.stringify([...cart,p]))
+                        toast.success("Item added to cart");
+                      }}
+                    >
+                      ADD TO CART
+                    </button>
                   </div>
                 </div>
               </div>

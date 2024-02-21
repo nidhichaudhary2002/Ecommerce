@@ -44,6 +44,12 @@
 
 /* Banner image */
 
+.banner{
+margin: auto;
+padding: 10px;
+}
+
+
 .banner-img{
   padding-top: 60px;
 margin: auto;
