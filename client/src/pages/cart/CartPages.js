@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Layout from 'antd/es/layout/layout';
+import Layout from '../../components/Layout/Layout';
 import { useCart } from '../../context/cart';
 import { useAuth } from '../../context/auth';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+// import  '../../styles/cartStyles.css';
 
 const CartPage = () => {
   const [auth, setAuth] = useAuth();

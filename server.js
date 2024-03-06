@@ -7,6 +7,9 @@ import connectDB from './config/db.js';
 import cors from 'cors';
 import categoryRoutes from './routes/categoryRoutes.js';
 import productRoutes from './routes/productRoutes.js';
+import path from 'path';
+
+// const __dirname = dirname(fileURLToPath(import.meta.url));
 
 //configuration env
 dotenv.config();
@@ -28,16 +31,17 @@ app.use((req, res, next) => {
   next();
 });
 
+// app.use(express.static(path.join(__dirname, './client/build')));
+
 //routes
 
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/category', categoryRoutes);
 app.use('/api/v1/product', productRoutes);
 
-//rest api
-app.get('/', (req, res) => {
-  res.send('<h1>Welcome to ecommerce app </h1>');
-});
+// app.get('*', function (req, res) {
+//   res.sendFile(path.join(__dirname, './client/build/index.html'));
+// });
 
 //PORT
 const PORT = process.env.PORT || 8080;
