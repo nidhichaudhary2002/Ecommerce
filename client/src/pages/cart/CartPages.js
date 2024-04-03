@@ -5,7 +5,6 @@ import { useAuth } from '../../context/auth';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-// import  '../../styles/cartStyles.css';
 
 const CartPage = () => {
   const [auth, setAuth] = useAuth();
